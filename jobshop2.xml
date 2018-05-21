@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_1.dtd'><nta><declaration>// Place global declarations here.
+
+// sync on chanels
+
+chan get_hammer, put_hammer, get_mallet, put_mallet;
+
+</declaration><template><name x="5" y="5">Vehicle</name><declaration>// Place local declarations here.</declaration><location id="id0" x="-374" y="93"><name x="-384" y="59">green</name></location><location id="id1" x="-374" y="-161"><name x="-384" y="-195">red</name></location><location id="id2" x="-501" y="-34"><name x="-484" y="-59">begin</name></location><init ref="id2"/><transition><source ref="id0"/><target ref="id1"/><label kind="synchronisation" x="-312" y="-88">put_hammer!</label><nail x="-304" y="-40"/></transition><transition><source ref="id1"/><target ref="id0"/><label kind="synchronisation" x="-440" y="-48">get_hammer!</label></transition><transition><source ref="id2"/><target ref="id0"/></transition><transition><source ref="id2"/><target ref="id1"/></transition></template><template><name>Center</name><location id="id3" x="-255" y="-42"><name x="-265" y="-76">taken</name></location><location id="id4" x="-399" y="-34"><name x="-409" y="-68">free</name></location><init ref="id4"/><transition><source ref="id3"/><target ref="id4"/><label kind="synchronisation" x="-365" y="-102">put_hammer?</label><nail x="-331" y="-76"/></transition><transition><source ref="id4"/><target ref="id3"/><label kind="synchronisation" x="-365" y="0">get_hammer?</label><nail x="-331" y="0"/></transition></template><template><name>Mallet</name><location id="id5" x="170" y="51"><name x="162" y="17">taken</name></location><location id="id6" x="26" y="60"><name x="17" y="26">free</name></location><init ref="id6"/><transition><source ref="id5"/><target ref="id6"/><label kind="synchronisation" x="60" y="-8">put_mallet?</label><nail x="94" y="17"/></transition><transition><source ref="id6"/><target ref="id5"/><label kind="synchronisation" x="60" y="94">get_mallet?</label><nail x="94" y="94"/></transition></template><system>// Place template instantiations here.
+Vehicle1 = Vehicle();
+Vehicle2 = Vehicle();
+Vehicle3 = Vehicle();
+Vehicle4 = Vehicle();
+// List one or more processes to be composed into a system.
+system Vehicle1, Vehicle2, Vehicle3,Vehicle4, Center;
+    </system></nta>
